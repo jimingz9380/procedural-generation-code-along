@@ -5,9 +5,6 @@ let canvasDimensions = 500;
 let canvas;
 // The number of water boxes we want around the outside of whatever we generate
 let margin = 2;
-// A Grid we'll initialize in setup()
-let myGrid;
-
 // The number of weathering passes to make
 let weatheringPasses = 10;
 
@@ -26,7 +23,7 @@ function setup(){
      *  @NOTE The initializeGrid() function, along with the functions it calls,
      *  are all defined in islands.js. We'll put our new work in here!
      */
-    myGrid = initializeGrid(canvasDimensions, margin);
+    initializeGrid(canvasDimensions, margin);
 }
 
 function draw(){
@@ -38,14 +35,13 @@ function draw(){
  *      1. The function should take two parameters:
  *          a) minTrees - The minimum number of trees to place
  *          b) maxTrees - The maximum number of trees to place
- *      2. Declare a variable to track the number of placed trees
- *      3. Pick a random (X, y) coordinate within the grid
+ *      2. Pick a random (X, y) coordinate within the grid
  *          a) If the box at that location in the grid is water or a tree, pick again
- *          b) If it's land, make it a tree and add it to the total
- *      4. Put step 3 in a loop that ends after it runs maxTrees times
- *      5. For extra variety, add a random check after placing at least the
+ *          b) If it's land, make it a tree
+ *      3. Put step 3 in a loop that ends after it runs maxTrees times
+ *      4. For extra variety, add a random check after placing at least the
  *          minimum number of trees to exit the loop early
- *      6. Call the function in setup() to add trees to the grid!
+ *      5. Call the function in setup() to add trees to the grid!
  */
 
 /**

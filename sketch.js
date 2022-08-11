@@ -41,7 +41,7 @@ function draw(){
  *      3. Put step 2 in a loop that ends after it runs maxTrees times
  *      4. For extra variety, add a random check after placing at least the
  *          minimum number of trees to exit the loop early
- *      5. Call the function in setup() to add trees to the grid!
+ *      5. Call this function in setup() to add trees to the grid!
  */
 
 /**

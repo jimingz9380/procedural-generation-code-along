@@ -194,7 +194,7 @@ function randomizeGrid() {
  * Checks the cells immediately adjacent to one particular cell in the given grid
  * Totals the number of neighbors with the given state (diagonal neighbors count as half)
  * 
- * @param {Grid} arrayToCheck The grid to evaluate neighbors in
+ * @param {Array} arrayToCheck The grid to evaluate neighbors in
  * @param {number} x The x-position of the cell in question
  * @param {number} y The y-position of the cell in question
  * @param {string} checkState The state we're looking for in neighbors 

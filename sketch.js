@@ -24,7 +24,7 @@ function setup(){
      *  are all defined in islands.js. We'll put our new work in here!
      */
     initializeGrid(canvasDimensions, margin);
-}
+}   
 
 function draw(){
     myGrid.display();
@@ -44,6 +44,19 @@ function draw(){
  *      5. Call this function in setup() to add trees to the grid!
  */
 
+function treePlace(minTrees, maxTrees){
+    for(let numTrees = 0; numTrees < maxTrees; numTrees++){
+        let valid = false
+        while(!valid){
+            let xCoord = randomNumberGenerator(myGrid.lowMargin, myGrid.highXMargin);
+            let yCoord = randomNumberGenerator(myGrid.lowMargin, myGrid.highYMargin);
+            if (myGrid.boxArray[xCoord][yCoord].currentState === BoxStates.land){
+                myGrid.boxArray[xCoord][yCoord].setState(BoxStates.tree);
+                valid = true;
+            }
+        }
+    }
+}
 /**
  *  @TODO Write a function that spreads more trees on the grid each time it runs
  *      1. This function should take a single parameter:
@@ -57,8 +70,28 @@ function draw(){
  *          the number of neighboring trees
  */
 
+function spreadTrees(spreadChance){
+    for(let x = myGrid.lowMargin; x < myGrid.highXMargin; x ++){
+        for(let y = myGrid.lowMargin; y < myGrid.highYMargin; y++){
+            let currentBox = myGrid.boxArray[x][y];
+            if(currentBox.currentState === BoxeStates.land){
+                let neighbors = checkNeighbors(myGrid.statesArray(), x, y, BoxeStates.tree);
+                if(Math.random() < neighbors * spreadChance){
+                    currentBox.setState(BoxStates.tree);
+                }
+            } 
+        }
+    }
+}
 /**
  *  @TODO Call the function to spread trees on the press of a key
  *      Note that our previous method of checking a pressed key runs
  *      every frame that the key is pressed, which isn't what we want!
  */
+
+function keyReleased(){
+    if(keyCode == 32){
+        spreadTrees(0.15);
+    }
+}
+
